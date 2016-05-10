@@ -12,25 +12,25 @@ The following are conventions for naming and using branches. Overall, If your br
 does not follow these conventions it may be removed without warning.
 
 #### Prefixes
-With few exceptions, valid branch names have one of the following grouping tokens:
+With few exceptions, valid branch names have one of the following prefixes (grouping tokens):
 
-* *dev* - a branch that contains code for a new feature or functionality. Example: `dev/pneumatics`
+* *dev* - a branch that contains a new feature to the code. Example: `dev-pneumatics`
 
 * *wip* - similar to a dev branch, except that the member is certain that the branch
-will not be implemented for a long time. Example: `wip/2ballauto`
+will not be implemented for a long time. Example: `wip-2ballauto`
 
 * *fix* - a branch that fixes any problem with existing code, whether it be debugging
-or formatting. Example: `fix/segfault`
+or formatting. Example: `fix-segfault`
 
-* *ut* - a unit testing branch. `ut/pid_tuning`
+* *ut* - a unit testing branch. Example: `ut-pid_tuning`
 
 * *kitbot* - any branches off the kitbot branch. These types of branches should be
 kept to a minimum on the repository and removed as soon as possible. Consider
 creating a ut branch before branching off the kitbot branch.
-Example: `kitbot/swerve_drive`
+Example: `kitbot-swerve_drive`
 
 #### Special naming cases
-The following are special branches repository that do not need a grouping token:  
+The following are special branches repository that do not need prefixes:  
 
 * *master* - the most up to date version of the code. master must compile at all
 times. Do not merge into master without permission from the programming captain.
