@@ -14,7 +14,7 @@ does not follow these conventions it may be removed without warning.
 #### Prefixes
 With few exceptions, valid branch names have one of the following grouping tokens:
 
-* *dev* - a branch that contains a new feature to the code. Example: `dev/pneumatics`
+* *dev* - a branch that contains code for a new feature or functionality. Example: `dev/pneumatics`
 
 * *wip* - similar to a dev branch, except that the member is certain that the branch
 will not be implemented for a long time. Example: `wip/2ballauto`
