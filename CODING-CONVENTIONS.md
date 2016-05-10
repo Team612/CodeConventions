@@ -270,7 +270,7 @@ with the body of the class.
 
 ## Misc
 
-###Arrays
+### Arrays
 Standard library arrays are preferable to C-style arrays. For example:
 
     std::array<int, 5> values = { /*values*/ };
@@ -279,6 +279,33 @@ instead of
 
     int values[5] = { /*values*/ };
 
-###Pointers
+### Pointers
 std::shared_ptr and std::unique_ptr should be use in place of raw pointers at
 **all times**.    
+
+### `printf`
+printf should print serious, descriptive messages to aid the drivers or to aid
+debugging. All printfs usually should start with one three descriptors, but others
+can be made if appropriate:
+
+* *Info:* - general information. Used for example, when you to know if a line of code
+is being called.
+
+* *Warning:* - used to tell drivers or programmers that something may have gone wrong.
+Warnings are colored yellow in the Driverstation console.
+
+* *ERROR:* - used to indicate a situation that may indicate a fatal problem in the
+execution of a block of code. Errors are colored red in the Driverstation console.
+
+In addition, `printf` statements must contain the file, method, and line number it is
+being called from in parentheses after the main message. Example:
+
+    std::printf("ERROR: Autonomous not initialized properly! (Robot.cpp, AutonomousInit(), 100)\n");
+
+`printf` statements must also end in a new line. So this:
+
+    std::printf("Info: Hello!\n");
+
+instead of this:
+
+    std::printf("\nInfo: Hello!");
