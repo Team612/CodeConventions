@@ -12,7 +12,7 @@ This document is modeled after the [Google Code C++ style guide]
 
 ### Guards
 Every header file **must** have the #pragma once includeguard at the beginning of
-the file.
+the file. #define includeguards are not acceptable.
 
 ### `using namespace` Statements
 Statements beginning with `using namespace` should never be used in header
@@ -21,8 +21,7 @@ by their full name, e.g. `std::vector`, especially in the case of the standard
 library functions. If needed, an alternative to this in some cases, as in types
 is to use a type definition to accomplish the following.
 
-    class Foo
-    {
+    class Foo {
         typedef std::really_long_type::internal_type anothername;
     };
 
@@ -59,17 +58,20 @@ When assigning values to member variables in a constructor, use the
 initialization list rather than the body of the constructor when possible. That
 is, do this:
 
-    Foo::Foo()
-        : bar(0),
-          baz(1)
-    {
+    Foo::Foo() : bar(0), baz(1) {
+        // Initialize
+    }
+
+or this if the list is long:
+
+    Foo::Foo() : bar(0),
+                 baz(1) {
         // Initialize
     }
 
 Rather than this:
 
-    Foo::Foo()
-    {
+    Foo::Foo() {
         bar = 0;
         baz = 1;
         // Initialize
@@ -79,8 +81,29 @@ This method is both more efficient and the only valid method to initialize
 constant member variables, so using it consistently helps prevent errors.
 
 #### Default Constructors
-Default constructors must be defined for all classes except for Command-based
-classes.
+It is preferable that default constructors are labeled as such:
+
+    class Foo {
+    public:
+        Foo() = default;
+    }
+
+#### Deconstructors
+Unless the deconstructor is actually being used, it is preferable to define them
+as unimplemented virtual methods or to not define them at all.
+
+    class Foo {
+    public:
+        Foo() = default;
+        virtual ~Foo() = 0;
+    }
+
+or
+    class Foo {
+    public:
+        Foo() = default;
+        //no deconstructor needed
+    }
 
 ### Structs vs. Classes
 Structs should be used only for containers for data, they must not have
@@ -90,15 +113,14 @@ methods. When in doubt, use a class.
 Class members should be declared as `private` unless absolutely
 necessary. Getters and setters should be used for changing member variables of
 classes, rather than making the variables public. Getters and setters should be
-named `get_variable_name()` and `set_variable_name( variable_type new_variable_name )`
+named `getVariableName()` and `setVariableName( variable_type new_variable_name )`
 respectively.
 
 ### Order of Declaration
 `public` class members should be declared before `private` class members, and
 variables should be declared before methods, e.g.
 
-    class Foo
-    {
+    class Foo {
         public:
             int i;
             Bar();
@@ -129,7 +151,7 @@ Use only `int`,`long`, `short`, and/or `unsigned`. Do not use the types from
 on bit length as in code related to I2C or other bit-shifting-related code.
 
 ## Preprocessor Macros
-Avoid using preprocessor macros when possible.
+Preprocessor macros should be used for debugging purposes only.
 
 ## Values of Zero
 Use 0 for integers, nullptr for pointers, 0.0 for reals (i.e. doubles), 0.0f
@@ -151,15 +173,9 @@ Type names are in CamelCase. This applies to classes, structs, enums, and all
 other user-defined types. These should correspond to the file name, but multiple
 types can be defined in one file when nested, i.e.
 
-    class Foo
-    {
-        enum class Bar
-        {
-            Baz,
-            Bob
-        };
-        struct Thing
-        {
+    class Foo {
+        enum class Bar { BAZ, BOB };
+        struct Thing {
             int i;
         };
     };
@@ -177,6 +193,8 @@ name, e.g. `MoveForward()` not just `Forward()`.
 
 ### Enums
 Enums should be named in CamelCase; enum values should be named in CamelCase.
+
+Values in enums should be in UUPER\_CASE.
 
 ### Macro Names
 Macros should be named in UPPER\_CASE.
@@ -200,22 +218,34 @@ Tabs should be used for logical indentation, and for alignment. However, Eclipse
 be set to use 4 spaces for tabs. This prevents alignment from being distorted by different tab sizes.
 
 ### Curly Braces
-Curly braces should open on a new line as compared the expression that requires a new
-block. For example:
+Curly braces should appear on the same line as the compared expression that requires
+a new block. For example:
+    int Foo() {
+        // Function body
+    }
 
+
+Rather than:
     int Foo()
     {
         // Function body
     }
 
-Rather than:
-
-    int Foo() {
-        // Function body
-    }
-
 Conditional statements must always use curly braces, even when they only span
 one line.
+
+### Enumerations
+Enums should be all on the same line, unless they are significantly long, then each element can
+appear on its own line. For example:
+    enum MyEnum { FOO, BAR, BAZ };
+
+or
+    enum MyLongEnum { FOO,
+                      BAR,
+                      BAZ,
+                      BOO,
+                      CAR,
+                      LOP };
 
 ### Boolean Expressions
 Boolean expressions spanning more than one line should have the joining operator
@@ -235,3 +265,18 @@ expression. These should follow the special case above for parentheticals.
 ### Classes
 Access specifiers (`public`, `private`, and `protected`) should not be indented
 with the body of the class.
+
+## Misc
+
+###Arrays
+Standard library arrays are preferable to C-style arrays. For example:
+
+    std::array<int, 5> values = { /*values*/ };
+
+instead of
+
+    int values[5] = { /*values*/ };
+
+###Pointers
+std::shared_ptr and std::unique_ptr should be use in place of raw pointers at
+**all times**.    
