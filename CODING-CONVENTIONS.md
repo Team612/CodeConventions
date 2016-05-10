@@ -283,7 +283,12 @@ instead of
 std::shared_ptr and std::unique_ptr should be use in place of raw pointers at
 **all times**.    
 
-### `printf`
+### Print statements
+
+#### standard cout
+std::cout should never be used anywhere in the robot code. Use std::printf instead.
+
+#### `printf`
 printf should print serious, descriptive messages to aid the drivers or to aid
 debugging. All printfs usually should start with one three descriptors, but others
 can be made if appropriate:
