@@ -60,19 +60,17 @@ While commit messages do not always have to be 100% serious and/or professional,
 they should be civil. The types commit messages should follow these guide.
 
 ### Swearing
-Swearing should be used extremely sparingly. It is understandable to get frustrated
-over something and take it out on a commit message. However the goal is to not fill
-the repository with curse words. Remember that the repository is public and reflects
-our team in general.
+Using swear words in a commit message is unacceptable under any circumstance. It is
+understandable to get frustrated over something and take it out on a commit message,
+However the goal is to not fill the repository with curse words. Remember that the
+repository is public and reflects the image of Chantilly Robotics as a whole.
 
-Swearing cases will be handled on an individual basis, ***but it is preferable members
-not swear at all***. This would be a example of swearing in a commit message that
-*may* be considered acceptable (provided the user didn't commit like this on a
-regular basis):
+This would be a example of swearing in a commit message that would not be accepted
+in PRs:
 
     Changed the Execute() method in the Drive command to be less crappy.
 
-This example would not be acceptable under any circumstance.
+This example would also not be acceptable:
 
     Finally fucking fixed the shitty command that some other asswipe fucking wrote.
 
