@@ -12,22 +12,25 @@ The following are conventions for naming and using branches. Overall, If your br
 does not follow these conventions it may be removed without warning.
 
 #### Prefixes
-With few exceptions, valid branch names have one of the following prefixes:
+With few exceptions, valid branch names have one of the following grouping tokens:
 
-* *dev* - a branch that contains a new feature to the code. Example: `dev-pneumatics`
+* *dev* - a branch that contains a new feature to the code. Example: `dev/pneumatics`
+
+* *wip* - similar to a dev branch, except that the member is certain that the branch
+will not be implemented for a long time. Example: `wip/2ballauto`
 
 * *fix* - a branch that fixes any problem with existing code, whether it be debugging
-or formatting Example: `fix-segfault`
+or formatting. Example: `fix/segfault`
 
-* *ut* - a unit testing branch. `ut-new_shooter`
+* *ut* - a unit testing branch. `ut/pid_tuning`
 
 * *kitbot* - any branches off the kitbot branch. These types of branches should be
 kept to a minimum on the repository and removed as soon as possible. Consider
 creating a ut branch before branching off the kitbot branch.
-Example: `kitbot-swerve_drive`
+Example: `kitbot/swerve_drive`
 
 #### Special naming cases
-The following are special branches repository that do not need prefixes:  
+The following are special branches repository that do not need a grouping token:  
 
 * *master* - the most up to date version of the code. master must compile at all
 times. Do not merge into master without permission from the programming captain.
@@ -62,7 +65,7 @@ over something and take it out on a commit message. However the goal is to not f
 the repository with curse words. Remember that the repository is public and reflects
 our team in general.
 
-Swearing cases will be handled on an individual basis, ***but it is preferred members
+Swearing cases will be handled on an individual basis, ***but it is preferable members
 not swear at all***. This would be a example of swearing in a commit message that
 *may* be considered acceptable (provided the user didn't commit like this on a
 regular basis):
