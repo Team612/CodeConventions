@@ -11,7 +11,7 @@ This document is modeled after the [Google Code C++ style guide]
 ## Header Files
 
 ### Guards
-Every header file **must** have the #pragma once includeguard at the beginning of
+Every header file **must** have the `#pragma once` includeguard at the beginning of
 the file. #define includeguards are not acceptable.
 
 ### `using namespace` Statements
@@ -99,6 +99,7 @@ as unimplemented virtual methods or to not define them at all.
     }
 
 or
+
     class Foo {
     public:
         Foo() = default;
@@ -113,7 +114,7 @@ methods. When in doubt, use a class.
 Class members should be declared as `private` unless absolutely
 necessary. Getters and setters should be used for changing member variables of
 classes, rather than making the variables public. Getters and setters should be
-named `getVariableName()` and `setVariableName( variable_type new_variable_name )`
+named `get_variable_name()` and `set_variable_name( variable_type new_variable_name )`
 respectively.
 
 ### Order of Declaration
