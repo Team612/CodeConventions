@@ -152,7 +152,8 @@ Use only `int`,`long`, `short`, and/or `unsigned`. Do not use the types from
 on bit length as in code related to I2C or other bit-shifting-related code.
 
 ## Preprocessor Macros
-Preprocessor macros should be used for debugging purposes only.
+Preprocessor macros should not be used in the main code base. They can be used for
+debugging purposes in unit tests but must be removed before being re-implemented.
 
 ## Values of Zero
 Use 0 for integers, nullptr for pointers, 0.0 for reals (i.e. doubles), 0.0f
