@@ -11,10 +11,8 @@ This document is modeled after the [Google Code C++ style guide]
 ## Header Files
 
 ### Guards
-Every header file **must** be wrapped in an include, or`#define` guard. This is best
-accomplished with the use of `#pragma once` at the beginning of the file, instead of
-the Eclipse builtin includeguards, due to appearance, code clutter, and slight
-performance optimizations in the compiler.
+Every header file **must** have the #pragma once includeguard at the beginning of
+the file.
 
 ### `using namespace` Statements
 Statements beginning with `using namespace` should never be used in header
@@ -63,14 +61,14 @@ is, do this:
 
     Foo::Foo()
         : bar(0),
-          baz(1) 
+          baz(1)
     {
         // Initialize
     }
 
 Rather than this:
 
-    Foo::Foo() 
+    Foo::Foo()
     {
         bar = 0;
         baz = 1;
@@ -81,7 +79,7 @@ This method is both more efficient and the only valid method to initialize
 constant member variables, so using it consistently helps prevent errors.
 
 #### Default Constructors
-Default constructors must be defined for all classes except for Command-based 
+Default constructors must be defined for all classes except for Command-based
 classes.
 
 ### Structs vs. Classes
@@ -99,7 +97,7 @@ respectively.
 `public` class members should be declared before `private` class members, and
 variables should be declared before methods, e.g.
 
-    class Foo 
+    class Foo
     {
         public:
             int i;
@@ -118,7 +116,7 @@ Do not use exceptions, as they make control flow difficult to understand and
 require extremely safe coding to avoid memory leaks.
 
 ## Casting
-Preferentially use C++ style casting, i.e. `static_cast<int>(i)`, rather than 
+Preferentially use C++ style casting, i.e. `static_cast<int>(i)`, rather than
 C-style casting, i.e. `(int)i`.
 
 ## Increment and Decrement
@@ -126,15 +124,15 @@ Use the postfix form of `++` and `--` whenever either form would be acceptable,
 e.g. `i++;` rather than `++i;`
 
 ## Integer Types
-Use only `int`,`long`, `short`, and/or `unsigned`. Do not use the types from 
-`<stdint.h>`, such as `int_32_t` or `uint_64_t`, unless specifically relying 
+Use only `int`,`long`, `short`, and/or `unsigned`. Do not use the types from
+`<stdint.h>`, such as `int_32_t` or `uint_64_t`, unless specifically relying
 on bit length as in code related to I2C or other bit-shifting-related code.
 
 ## Preprocessor Macros
 Avoid using preprocessor macros when possible.
 
 ## Values of Zero
-Use 0 for integers, nullptr for pointers, 0.0 for reals (i.e. doubles), 0.0f 
+Use 0 for integers, nullptr for pointers, 0.0 for reals (i.e. doubles), 0.0f
 for floats, and '\0' for chars.
 
 ## Constant Values
@@ -194,7 +192,7 @@ multi-line form should be used, i.e. `/* COMMENT */`.
 ## Formatting
 
 ### Line Length
-Every line should be no more than 80 characters long. If more than this, newlines 
+Every line should be no more than 80 characters long. If more than this, newlines
 should be added for formatting.
 
 ### Whitespace
