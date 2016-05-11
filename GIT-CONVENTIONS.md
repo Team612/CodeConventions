@@ -66,15 +66,6 @@ understandable to get frustrated over something and take it out on a commit mess
 However the goal is to not fill the repository with curse words. Remember that the
 repository is public and reflects the image of Chantilly Robotics as a whole.
 
-This would be a example of swearing in a commit message that would not be accepted
-in PRs:
-
-    Changed the Execute() method in the Drive command to be less crappy.
-
-This example would also not be acceptable:
-
-    Finally fucking fixed the shitty command that some other asswipe fucking wrote.
-
 ### Content
 Commit messages should be descriptive of what's in the commit. A commit message
 such as `changes` or `fixed stuff` is unacceptable.
