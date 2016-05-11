@@ -201,9 +201,7 @@ Functions should be in CamelCase, and usually should contain a verb in their
 name, e.g. `MoveForward()` not just `Forward()`.
 
 ### Enums
-Enums should be named in CamelCase; enum values should be named in CamelCase.
-
-Values in enums should be in UUPER\_CASE.
+Enums should be named in CamelCase; enum values should be named in UPPER\_CASE.
 
 ### Macro Names
 Macros should be named in UPPER\_CASE.
