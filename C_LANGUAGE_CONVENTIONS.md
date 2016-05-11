@@ -1,4 +1,4 @@
-# Coding Style Guide
+# C++ Coding Style Guide
 These rules are meant as guidelines for writing C++ for FIRST Team 612. These
 are not hard-and-fast rules; code should first and foremost be designed in a
 logical manner. However, these guidelines allow consistency and readability to
@@ -11,8 +11,10 @@ This document is modeled after the [Google Code C++ style guide]
 ## Header Files
 
 ### Guards
-Every header file **must** have the `#pragma once` includeguard at the beginning of
-the file. #define includeguards are not acceptable.
+Every header file **must** be wrapped in an include guard, which prevents them from 
+being compiled multiple times. This is best accomplished through the use of 
+a `#pragma once` compiler macro at the beginning of the file. Eclipse-default `#define`
+style include guards will not be permitted.
 
 ### `using namespace` Statements
 Statements beginning with `using namespace` should never be used in header
@@ -47,7 +49,9 @@ Rather than this:
     i = 0;
 
 If variables are used only once, for readability, make them `const`
-and keep them directly above the line that they are used in.
+and keep them directly above the line that they are used in, at the
+beginning of the function they are used in, or as a private `const`
+member of the enclosing class.
 
 ## Classes
 
@@ -81,16 +85,19 @@ This method is both more efficient and the only valid method to initialize
 constant member variables, so using it consistently helps prevent errors.
 
 #### Default Constructors
-It is preferable that default constructors are labeled as such:
+Default constructors should be labeled as such:
 
     class Foo {
     public:
         Foo() = default;
     }
 
+Default constructors are required and must be defined for all classes, 
+excluding Command-based classes.
+
 #### Deconstructors
-Unless the deconstructor is actually being used, it is preferable to define them
-as unimplemented virtual methods or to not define them at all.
+Unless the deconstructor is being used for a valid reason, they should not
+be defined. If necessary, an unimplemented virtual deconstructor can be used.
 
     class Foo {
     public:
@@ -114,7 +121,7 @@ methods. When in doubt, use a class.
 Class members should be declared as `private` unless absolutely
 necessary. Getters and setters should be used for changing member variables of
 classes, rather than making the variables public. Getters and setters should be
-named `get_variable_name()` and `set_variable_name( variable_type new_variable_name )`
+named `getVariableName()` and `setVariableName( variable_type new_variable_name )`
 respectively.
 
 ### Order of Declaration
@@ -132,7 +139,7 @@ variables should be declared before methods, e.g.
 
 ## Functions and Methods
 Functions should be as short as possible. Functions ought to accomplish one and
-only one task, and be descriptively named to fit that task, e.g. `RaiseArm()`.
+only one task, and be descriptively named to fit that task, e.g. `raiseArm()`.
 
 ## Exceptions
 Do not use exceptions, as they make control flow difficult to understand and
