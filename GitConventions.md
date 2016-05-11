@@ -35,8 +35,9 @@ The following are special branches repository that do not need prefixes:
 * *master* - the most up to date version of the code. master must compile at all
 times. Do not merge into master without permission from the programming captain.
 
-* *workingcode* - the latest code used during a competition. This branch must
-compile and run properly at all times.
+* *workingcode* - the latest code confirmed completely tested on official hardware
+and working. This branch is frequently updated after competition. This branch must
+compile and run properly on the robot at all times.
 
 * *kitbot* - the code for the kitbot.
 
