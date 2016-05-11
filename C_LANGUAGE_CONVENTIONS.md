@@ -242,17 +242,23 @@ Conditional statements must always use curly braces, even when they only span
 one line.
 
 ### Enumerations
-Enums should be all on the same line, unless they are significantly long, then each element can
-appear on its own line. For example:
+If they will fit inside the character limit, enums should be placed on the same
+line. Otherwise, each element of the enum should appear on it's own line.
+
+ For example:
+
     enum MyEnum { FOO, BAR, BAZ };
 
 or
-    enum MyLongEnum { FOO,
-                      BAR,
-                      BAZ,
-                      BOO,
-                      CAR,
-                      LOP };
+
+    enum MyEnum { 
+        FOO,
+        BAR,
+        BAZ,
+        BOO,
+        CAR,
+        LOP 
+    };
 
 ### Boolean Expressions
 Boolean expressions spanning more than one line should have the joining operator
@@ -289,17 +295,23 @@ std::shared_ptr and std::unique_ptr should be use in place of raw pointers at
 **all times**.    
 
 ### Print statements
+Print statements should be avoided when possible in favor of breakpoints or
+Smart/SmarterDashboard when debugging, and in favor of Smart/SmarterDashboard
+or a custom solution for driver feedback, but are allowable if their use would
+have a benefit greater than one of these other solutions. If it would be easier
+to use a print statement, but it would provide no other benefit, the other
+solution should be used instead.
 
-#### standard cout
-std::cout should never be used anywhere in the robot code. Use std::printf instead.
+#### `cout`/`cin`
+std::cout or std::cin should not be used. Use std::printf instead.
 
 #### `printf`
-printf should print serious, descriptive messages to aid the drivers or to aid
-debugging. All printfs usually should start with one three descriptors, but others
-can be made if appropriate:
+ should print serious, descriptive messages to aid the drivers or to aid
+debugging. All printfs should begin with one of the following three 
+descriptors.
 
-* *Info:* - general information. Used for example, when you to know if a line of code
-is being called.
+* *Info:* - general information. Used for example, when you to know if a line 
+of code is being called.
 
 * *Warning:* - used to tell drivers or programmers that something may have gone wrong.
 Warnings are colored yellow in the Driverstation console.
