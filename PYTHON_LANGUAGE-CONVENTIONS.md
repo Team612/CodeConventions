@@ -5,4 +5,5 @@ logical manner. However, these guidelines allow consistency and readability to
 be maintained across all of the robot's code. Do not break them without good
 reason.
 
-All Python code should strictly follow the PEP8 Standard.
+All Python code should strictly follow the PEP8 Standard. This standard can be
+found at [this link](https://www.python.org/dev/peps/pep-0008/).
