@@ -11,24 +11,25 @@ This document is modeled after the [Google Code C++ style guide]
 ## Header Files
 
 ### Guards
-Every header file **must** be wrapped in an include guard, which prevents them from 
-being compiled multiple times. This is best accomplished through the use of 
-a `#pragma once` compiler macro at the beginning of the file. Eclipse-default `#define`
-style include guards will not be permitted.
+Every header file **must** be wrapped in an include guard, which prevents them
+from being compiled multiple times. This is best accomplished through the use
+of a `#pragma once` compiler macro at the beginning of the file. 
+
+Eclipse-default `#define`-style include guards will not be permitted.
 
 ### `using namespace` Statements
 Statements beginning with `using namespace` should never be used in header
-files, as they pollute the global namespace. Instead, names should be referenced
-by their full name, e.g. `std::vector`, especially in the case of the standard
-library functions. If needed, an alternative to this in some cases, as in types
-is to use a type definition to accomplish the following.
+files, as they pollute the global namespace. Instead, types should be 
+referenced by their full name, e.g. `std::vector`, especially in the case of
+standard library functions. If needed, an alternative to this in some cases
+is to use a type definition as in the following example:
 
     class Foo {
         typedef std::really_long_type::internal_type anothername;
     };
 
-This should always be done inside of the class that it is being used in as to not
-pollute the global namespace.
+This should always be done inside of the class that it is being used in, as 
+to not pollute the global namespace.
 
 ## Scoping
 
@@ -48,10 +49,9 @@ Rather than this:
     int i;
     i = 0;
 
-If variables are used only once, for readability, make them `const`
-and keep them directly above the line that they are used in, at the
-beginning of the function they are used in, or as a private `const`
-member of the enclosing class.
+If variables are used only once, for readability, make them `const` and keep 
+them directly above the line that they are used in, at the beginning of the 
+function they are used in, or as a private `const`member of the enclosing class.
 
 ## Classes
 
@@ -59,8 +59,8 @@ member of the enclosing class.
 
 #### Initialization Lists
 When assigning values to member variables in a constructor, use the
-initialization list rather than the body of the constructor when possible. That
-is, do this:
+initialization list rather than the body of the constructor when possible. For
+example:
 
     Foo::Foo() : bar(0), baz(1) {
         // Initialize
@@ -121,8 +121,8 @@ methods. When in doubt, use a class.
 Class members should be declared as `private` unless absolutely
 necessary. Getters and setters should be used for changing member variables of
 classes, rather than making the variables public. Getters and setters should be
-named `getVariableName()` and `setVariableName( variable_type new_variable_name )`
-respectively.
+named `getVariableName()` and `setVariableName( variable_type 
+new_variable_name )` respectively.
 
 ### Order of Declaration
 `public` class members should be declared before `private` class members, and
@@ -159,8 +159,9 @@ Use only `int`,`long`, `short`, and/or `unsigned`. Do not use the types from
 on bit length as in code related to I2C or other bit-shifting-related code.
 
 ## Preprocessor Macros
-Preprocessor macros should not be used in the main code base. They can be used for
-debugging purposes in unit tests but must be removed before being re-implemented.
+Preprocessor macros should not be used in the main code base. They can be used
+for debugging purposes in unit tests but must be removed before being
+re-implemented.
 
 ## Values of Zero
 Use 0 for integers, nullptr for pointers, 0.0 for reals (i.e. doubles), 0.0f
@@ -179,8 +180,8 @@ File names should be in CamelCase.
 
 ### Type Names
 Type names are in CamelCase. This applies to classes, structs, enums, and all
-other user-defined types. These should correspond to the file name, but multiple
-types can be defined in one file when nested, i.e.
+other user-defined types. These should correspond to the file name, but 
+multiple types can be defined in one file when nested, i.e.
 
     class Foo {
         enum class Bar { BAZ, BOB };
@@ -210,23 +211,24 @@ Macros should be named in UPPER\_CASE.
 
 ### Multi-line Comments
 Comments within the body of a method, function, and/or class should avoid using
-the multi-line form. Instead, these multiple-line comments should simply have `//` at
-the beginning of each line. For block comments in header files or outside of methods,
-multi-line form should be used, i.e. `/* COMMENT */`.
+the multi-line form. Instead, these multiple-line comments should simply have 
+`//` at the beginning of each line. For block comments in header files or 
+outside of methods, multi-line form should be used, i.e. `/* COMMENT */`.
 
 ## Formatting
 
 ### Line Length
-Every line should be no more than 80 characters long. If more than this, newlines
-should be added for formatting.
+Every line should be no more than 80 characters long. If more than this, 
+newlines should be added for formatting.
 
 ### Whitespace
-Tabs should be used for logical indentation, and for alignment. However, Eclipse should
-be set to use 4 spaces for tabs. This prevents alignment from being distorted by different tab sizes.
+Tabs should be used for logical indentation, and for alignment. However, 
+Eclipse should be set to use 4 spaces for tabs. This prevents alignment from
+being distorted by different tab sizes.
 
 ### Curly Braces
-Curly braces should appear on the same line as the compared expression that requires
-a new block. For example:
+Curly braces should appear on the same line as the compared expression that
+requires a new block. For example:
     int Foo() {
         // Function body
     }
@@ -272,8 +274,8 @@ Parentheses used for grouping should not have a space before and after their
 contents.
 
 ### Operators
-Operators should have a single space placed before and/or after their position in an
-expression. These should follow the special case above for parentheticals.
+Operators should have a single space placed before and/or after their position 
+in an expression. These should follow the special case above for parentheticals.
 
 ### Classes
 Access specifiers (`public`, `private`, and `protected`) should not be indented
@@ -313,11 +315,11 @@ descriptors.
 * *Info:* - general information. Used for example, when you to know if a line 
 of code is being called.
 
-* *Warning:* - used to tell drivers or programmers that something may have gone wrong.
-Warnings are colored yellow in the Driverstation console.
+* *Warning:* - used to tell drivers or programmers that something may have gone
+wrong. Warnings are colored yellow in the Driverstation console.
 
-* *ERROR:* - used to indicate a situation that may indicate a fatal problem in the
-execution of a block of code. Errors are colored red in the Driverstation console.
+* *ERROR:* - used to indicate a situation that may indicate a fatal problem in
+the execution of a block of code. Errors are colored red in the Driverstation console.
 
 In addition, `printf` statements must contain the file, method, and line number it is
 being called from in parentheses after the main message. Example:
