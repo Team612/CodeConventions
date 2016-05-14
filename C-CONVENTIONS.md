@@ -229,12 +229,14 @@ being distorted by different tab sizes.
 ### Curly Braces
 Curly braces should appear on the same line as the compared expression that
 requires a new block. For example:
+
     int Foo() {
         // Function body
     }
 
 
 Rather than:
+
     int Foo()
     {
         // Function body
