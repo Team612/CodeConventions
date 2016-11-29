@@ -44,7 +44,7 @@ like this:
 
     int i = 0;
 
-Rather than this:
+Rather than:
 
     int i;
     i = 0;
@@ -73,7 +73,7 @@ or this if the list is long:
         // Initialize
     }
 
-Rather than this:
+Rather than:
 
     Foo::Foo() {
         bar = 0;
@@ -136,6 +136,33 @@ variables should be declared before methods, e.g.
             int j;
             Baz();
     };
+    
+## Enums
+
+Enums should be named in CamelCase; enum values should be named in UPPER\_CASE.
+
+No raw `enum`s should be used, instead use `enum class`es, standard since C++11. 
+This helps to prevent name conflicts, since in an `enum`, the contained elements
+leak upwards one scope, ie into the class that contains the enum, or into the 
+global scope.
+
+Each element of an enum should be placed on a new line, even if the entire enum
+would fit within the character limit of one line.
+
+ For example:
+
+    enum MyEnum { 
+        FOO,
+        BAR,
+        BAZ,
+        BOO,
+        CAR,
+        LOP 
+    };
+
+Rather than:
+
+    enum MyEnum { FOO, BAR, BAZ };
 
 ## Functions and Methods
 Functions should be as short as possible. Functions ought to accomplish one and
@@ -201,9 +228,6 @@ Constants should be named in UPPER\_CASE.
 Functions should be in CamelCase, and usually should contain a verb in their
 name, e.g. `MoveForward()` not just `Forward()`.
 
-### Enums
-Enums should be named in CamelCase; enum values should be named in UPPER\_CASE.
-
 ### Macro Names
 Macros should be named in UPPER\_CASE.
 
@@ -244,25 +268,6 @@ Rather than:
 
 Conditional statements must always use curly braces, even when they only span
 one line.
-
-### Enumerations
-If they will fit inside the character limit, enums should be placed on the same
-line. Otherwise, each element of the enum should appear on it's own line.
-
- For example:
-
-    enum MyEnum { FOO, BAR, BAZ };
-
-or
-
-    enum MyEnum { 
-        FOO,
-        BAR,
-        BAZ,
-        BOO,
-        CAR,
-        LOP 
-    };
 
 ### Boolean Expressions
 Boolean expressions spanning more than one line should have the joining operator
