@@ -6,7 +6,7 @@ The following tips are meant as formatting guidelines for FIRST Team 612 when wr
 
 ## Classes
 
-Classes should always be `public` and the names should have each word start with a capital letter. For example, `public class DriveLeft`, `public class moveArm`, or `public class Stop`.
+Classes should always be `public` and the names should have each word start with a capital letter. For example, `public class DriveLeft`, `public class MoveArm`, or `public class Stop`.
 
 Class fields should be `private` unless specifically needed to be `public`. If a private variable must be changed, instead use a public `get` and `set` method. These methods should be named `getVariableName()` and `setVariableName(variable_type new_variable_name)`
 
