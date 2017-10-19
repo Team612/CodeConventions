@@ -10,6 +10,7 @@ Current standards include:
 | C++           | C-CONVENTIONS.md      |
 | Python        | PYTHON-CONVENTIONS.md |
 | Git           | GIT-CONVENTIONS.md    |
+| Java          | JAVA-CONVENTIONS.md   |
 
 
 All added documents should conform to similar naming standards, using the 
