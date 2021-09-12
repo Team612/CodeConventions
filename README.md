@@ -1,6 +1,8 @@
 # Code Conventions
 
-This repository contains the most current versions of all of Chantilly Robotics
+## Note: This repository is currently outdated. Please check out [this repository](https://github.com/Team612/612-ProgrammingResources), which should have the most up-to-date code conventions and documentation.
+
+This repository contains ~~the most current~~ outdated versions of all of Chantilly Robotics
 612's code and tool conventions documents.
 
 Current standards include:
